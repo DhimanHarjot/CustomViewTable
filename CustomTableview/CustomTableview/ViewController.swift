@@ -13,13 +13,15 @@ class ViewController: UIViewController {
     struct myCell {
         let title: String
         let imageName: String
+        let marks: String
+        let grade: String
     }
     let data: [myCell] = [
-    myCell(title: "Item 1", imageName: "myImage"),
-    myCell(title: "Item 2", imageName: "myImage"),
-    myCell(title: "Item 3", imageName: "myImage"),
-    myCell(title: "Item 4", imageName: "myImage"),
-    myCell(title: "Item 5", imageName: "myImage")
+    myCell(title: "Harjot Singh", imageName: "myImage", marks: "85", grade: "A"),
+    myCell(title: "Karan Singh", imageName: "myImage", marks: "75", grade: "B"),
+    myCell(title: "Arshdeep Singh", imageName: "myImage", marks: "65", grade: "C"),
+    myCell(title: "Bani Priya", imageName: "myImage", marks: "90", grade: "A+"),
+    myCell(title: "Simran Kaur", imageName: "myImage", marks: "95", grade: "A++")
     ]
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +44,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Selected \(data[indexPath.row].title)")
+        print("Selected \(data[indexPath.row].marks)")
+        print("Selected \(data[indexPath.row].grade)")
+        
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let content = data[indexPath.row]
@@ -49,6 +54,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         CustomTableViewCell
         cell.cellImage.image = UIImage(named: content.imageName)
         cell.cellLabel.text = content.title
+        cell.cellMarks.text = content.marks
+        cell.cellGrade.text = content.grade
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
